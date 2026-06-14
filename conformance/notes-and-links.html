@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>corpus: links and notes</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#555}
+  @page{size:1280px 720px;margin:0}
+  .slide{width:1280px;height:720px;background:#11151a;color:#e8eaed;
+    font-family:Helvetica,Arial,sans-serif;position:relative;overflow:hidden;
+    padding:72px 88px;margin:0 auto}
+  aside.notes{display:none}
+  h1{font-family:Georgia,serif;font-size:52px;font-weight:400;margin-bottom:28px}
+  p{font-size:18px;line-height:1.6;color:#b9c0c7;max-width:760px;margin-bottom:16px}
+  a{color:#f0b429;text-decoration:underline;text-underline-offset:3px}
+  .sources{position:absolute;bottom:56px;left:88px;font-size:13px;color:#8a939c}
+  .sources a{color:#aab3bc}
+</style>
+</head>
+<body>
+
+<section class="slide">
+  <h1>Links survive as real hyperlinks</h1>
+  <p>The full methodology is published at <a href="https://unpaper.ai/how-it-works">unpaper.ai/how-it-works</a>,
+    and questions go to <a href="mailto:hello@unrsnbl.ai">hello@unrsnbl.ai</a> — both must arrive in
+    PowerPoint as clickable runs, keeping their accent color and underline.</p>
+  <p>A <a href="/relative/path">relative link</a> carries no meaning inside a .pptx file and is
+    deliberately left as plain styled text.</p>
+  <p class="sources">Source: <a href="https://example.com/report-2026">Annual report 2026</a></p>
+  <aside class="notes">Open with the privacy story: nothing leaves the machine. Mention that the
+    hyperlinks in the footer are real — click one live in the converted file. Two minutes max on
+    this slide, the demo carries it.</aside>
+</section>
+
+<section class="slide">
+  <h1>Second slide, second note</h1>
+  <p>Speaker notes are per slide; this one must land on the second notes page, not be merged
+    into the first.</p>
+  <aside class="notes">Q2 numbers are preliminary — say so if asked. Hand over to Dana after this slide.</aside>
+</section>
+
+</body>
+</html>

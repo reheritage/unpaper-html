@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>corpus: bullets</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#555}
+  @page{size:1280px 720px;margin:0}
+  .slide{width:1280px;height:720px;background:#10151b;color:#e8eaed;
+    font-family:Helvetica,Arial,sans-serif;position:relative;overflow:hidden;
+    padding:64px 80px;margin:0 auto}
+  h1{font-family:Georgia,serif;font-size:46px;font-weight:400;margin-bottom:34px}
+  .cols{display:flex;gap:40px}
+  .list{flex:1}
+  .list h2{font-size:18px;font-weight:700;margin-bottom:14px;color:#f0b429}
+  ul.dots{list-style:none}
+  ul.dots li{position:relative;padding-left:24px;font-size:16px;line-height:1.6;color:#c3cad1;margin-bottom:10px}
+  ul.dots li::before{content:"●";position:absolute;left:0;color:#f0b429;font-size:11px;top:5px}
+  ul.dots li strong{color:#fff}
+  .pros li,.cons li{position:relative;padding-left:28px;font-size:16px;line-height:1.6;
+    color:#c3cad1;margin-bottom:10px;list-style:none}
+  .pros li::before{content:"+";position:absolute;left:0;top:0;color:#34d399;font-weight:700}
+  .cons li::before{content:"–";position:absolute;left:0;top:0;color:#f87171;font-weight:700}
+</style>
+</head>
+<body>
+
+<section class="slide">
+  <h1>Bullets, pros and cons</h1>
+  <div class="cols">
+    <div class="list">
+      <h2>Pseudo-element dots</h2>
+      <ul class="dots">
+        <li><strong>Folded glyphs</strong> ride inside the text runs when they hug the text.</li>
+        <li>A second item that wraps onto a second line to test the indent against the marker.</li>
+        <li>Third item, short.</li>
+      </ul>
+    </div>
+    <div class="list">
+      <h2>Pros</h2>
+      <ul class="pros">
+        <li>Gutter markers become their own text box.</li>
+        <li>Positive second point, also wrapping across two rendered lines for measure.</li>
+      </ul>
+      <h2 style="margin-top:22px">Cons</h2>
+      <ul class="cons">
+        <li>Minus glyphs must not overprint the first characters.</li>
+        <li>Second negative point, short.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

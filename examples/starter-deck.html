@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="midnight" data-bg="grid" data-accent="default" data-eyebrow="Briefing" data-brand="Your brand" data-foot="Confidential" data-ref="2026">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Untitled deck – unPaper</title>
+
+<!--
+═══════════════════════════════════════════════════════════════════════════
+  unPaper · SLIDES  ·  self-contained, print-ready 16:9 HTML  ·  unrsnbl.ai/unpaper
+═══════════════════════════════════════════════════════════════════════════
+
+  HOW THIS FILE WORKS (read before editing)
+  • This is ONE file. No external CSS, JS, fonts or images. Keep it that way so
+    it prints identically offline. (Want a brand font/logo? Add it yourself.)
+  • PRIVATE & LOCAL. Fully self-contained – it makes no network requests and
+    sends nothing anywhere. It opens, edits and prints entirely on your own
+    machine, so it is safe for confidential content.
+  • Each slide is a fixed 1280 × 720 canvas – exactly PowerPoint 16:9. On screen
+    it scales to fit; printed, every <section class="slide"> becomes ONE PDF page.
+  • To save a PDF: open this file in a real browser (Chrome or Safari) → Cmd/Ctrl + P
+    → "Save as PDF". On a phone: ⋯ / Share → Print → Save as PDF. Turn ON "Background
+    graphics" and leave margins on Default. (Printing from inside a chat app's built-in
+    browser often looks wrong – open the file in Chrome or Safari instead.)
+  • Present it: click "Present" in the toolbar, or open …/slides.html#present.
+
+  ───────────────────────────────────────────────────────────────────────────
+  ASSISTANT RULES  (you are an AI editing this deck – follow exactly)
+  ───────────────────────────────────────────────────────────────────────────
+  THIS DECK IS AN EXAMPLE OF THE FORMAT – NOT A FIXED OUTLINE. Match its look, type
+  scale, layouts and print setup, but build AS MANY SLIDES AS THE CONTENT NEEDS –
+  more or fewer than these eight. Add, remove and reorder slides freely; for each point
+  pick whichever example layout fits (cover · statement · list · cards · chart · table ·
+  stats · closing). For any data or comparison, use the chart (a real <svg> +
+  data-unpaper-chart) or the table (a real <table>) – they convert to native, editable
+  PowerPoint objects. The example's words are placeholders – replace them entirely.
+
+  KEEP INTACT, NEVER CHANGE: the <style> block, the @page rule, the .slide
+  1280×720 sizing, and the <script> at the bottom (it scales + auto-fits slides).
+  EDIT ONLY the slide content inside <section class="slide"> … </section>.
+
+  NO NEW JAVASCRIPT: the <script> already in this file is the only one allowed,
+  and no CONTENT may depend on it. Every word, number and image must exist in
+  the plain HTML/CSS itself (images as data: URIs or CSS backgrounds – never a
+  src set by a script). unPaper's HTML→PPTX converter reads the file with
+  scripts disabled, so anything scripted simply disappears from the PowerPoint.
+
+  HEADER / FOOTER: the running brand (top-right), footer label (bottom-left) and
+  cover date come from <html data-brand="…" data-foot="…" data-ref="…">. Set those
+  to the user's own values – they fill every .t-brand / .t-foot / .t-ref slot. Do
+  NOT type a brand into each slide by hand.
+
+  TO ADD A SLIDE: copy a whole <section class="slide" data-kind="…"> block and
+  edit its text. Reuse the provided layouts – do not invent new CSS classes.
+
+  FIT THE PAGE – the #1 rule. Each slide must hold comfortably in 1280×720 with
+  air around it. Respect these budgets (one IDEA per slide):
+    • Slide title: ≤ 10 words.   • Body: ≤ ~55 words total per slide.
+    • Bulleted list: ≤ 5 items, ≤ 12 words each.   • Columns/cards: 2–3 max.
+    • Stat figures: ≤ 4 per slide.
+  If a slide feels full, SPLIT it into two – never shrink to cram. A faint "TRIM"
+  badge appears on screen if a slide overflows; remove content until it clears.
+
+  TASTE – make it look designed, not "AI-generated":
+    • No emoji. No purple gradients. No clip-art. No drop-shadow soup.
+    • Use the type scale already defined; don't hand-set font sizes.
+    • One accent colour, used sparingly. Generous whitespace > more content.
+    • Sentence case. Specific nouns and numbers over adjectives.
+
+  LOOK: all visual options live on the <html> tag – change attributes, not CSS.
+    • data-theme  = midnight · paper · slate
+    • data-bg     = grid · dots · gradient · plain        (slide background)
+    • data-accent = default · gold · teal · blue · coral · violet
+═══════════════════════════════════════════════════════════════════════════
+-->
+
+<style>
+  /* ════════════════════════════════════════════════════════════════
+     SKIN LAYER — palette · fonts · accent. A new template skin
+     (Consulting, Executive Brief…) overrides ONLY these tokens; the
+     SKELETON below (geometry, components, script) is shared verbatim,
+     so every skin converts identically. See /TEMPLATES.md.
+     ════════════════════════════════════════════════════════════════ */
+  /* ─── THEME TOKENS ─────────────────────────────────────────────── */
+  :root{
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  }
+  html[data-theme="midnight"]{
+    --bg:#0d2030; --bg-2:#05080c; --panel:#102230; --ink:#f4f7fb; --ink-soft:#c4cfdd;
+    --ink-dim:#7d8da0; --ink-faint:#566374; --line:rgba(140,165,195,.16); --line-soft:rgba(140,165,195,.08);
+    --accent:#ffd24a; --accent-ink:#0a1620; --grid:rgba(120,150,185,.05);
+  }
+  html[data-theme="paper"]{
+    --bg:#fcfbf7; --bg-2:#e7e1d3; --panel:#ffffff; --ink:#191917; --ink-soft:#45433d;
+    --ink-dim:#8b897f; --ink-faint:#b4b1a6; --line:rgba(30,28,22,.14); --line-soft:rgba(30,28,22,.07);
+    --accent:#0f7a6b; --accent-ink:#ffffff; --grid:rgba(30,28,22,.035);
+  }
+  html[data-theme="slate"]{
+    --bg:#eef1f4; --bg-2:#d2dae2; --panel:#ffffff; --ink:#1b2430; --ink-soft:#465160;
+    --ink-dim:#7d8794; --ink-faint:#aab2bd; --line:rgba(27,36,48,.14); --line-soft:rgba(27,36,48,.06);
+    --accent:#2563a8; --accent-ink:#ffffff; --grid:rgba(27,36,48,.035);
+  }
+
+  /* ─── ACCENT OVERRIDES (data-accent) – shades tuned per light/dark theme ── */
+  html[data-accent="gold"]{--accent:#b8860b;--accent-ink:#ffffff}
+  html[data-accent="teal"]{--accent:#0f7a6b;--accent-ink:#ffffff}
+  html[data-accent="blue"]{--accent:#2563a8;--accent-ink:#ffffff}
+  html[data-accent="coral"]{--accent:#c2452f;--accent-ink:#ffffff}
+  html[data-accent="violet"]{--accent:#6d4fc4;--accent-ink:#ffffff}
+  html[data-theme="midnight"][data-accent="gold"]{--accent:#ffd24a;--accent-ink:#0a1620}
+  html[data-theme="midnight"][data-accent="teal"]{--accent:#56cdbb;--accent-ink:#0a1620}
+  html[data-theme="midnight"][data-accent="blue"]{--accent:#7fb3ef;--accent-ink:#0a1620}
+  html[data-theme="midnight"][data-accent="coral"]{--accent:#ff8a70;--accent-ink:#0a1620}
+  html[data-theme="midnight"][data-accent="violet"]{--accent:#b3a4f7;--accent-ink:#0a1620}
+
+  /* ════════════════════════════════════════════════════════════════
+     SKELETON — shared by every skin: geometry, page flow, the component
+     library, present/print modes, and the engine script. Change with care.
+     ════════════════════════════════════════════════════════════════ */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg-2);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  aside.notes{display:none}  /* per-slide speaker notes: invisible here, become real notes in PowerPoint */
+
+  /* ─── PAGE FLOW (vertical stack on screen) ─────────────────────── */
+  .deck{display:flex;flex-direction:column;align-items:center;gap:30px;padding:46px 24px 120px}
+
+  .slide-frame{width:min(100%,1280px);flex-shrink:0}        /* responsive box */
+  .slide{
+    width:1280px;height:720px;position:relative;overflow:hidden;
+    transform-origin:top left;                               /* scaled by script */
+    background:var(--bg);color:var(--ink);
+    box-shadow:0 18px 50px rgba(0,0,0,.28);border-radius:2px;
+  }
+  /* background: a soft corner glow always; the pattern depends on data-bg */
+  .slide::before{
+    content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+    background:radial-gradient(circle at 14% 8%, color-mix(in srgb, var(--accent) 7%, transparent), transparent 38%);
+  }
+  html[data-bg="grid"] .slide::before{
+    background:
+      radial-gradient(circle at 14% 8%, color-mix(in srgb, var(--accent) 7%, transparent), transparent 38%),
+      linear-gradient(var(--grid) 1px,transparent 1px),
+      linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-size:auto,44px 44px,44px 44px;
+  }
+  html[data-bg="dots"] .slide::before{
+    background:
+      radial-gradient(circle at 14% 8%, color-mix(in srgb, var(--accent) 7%, transparent), transparent 38%),
+      radial-gradient(color-mix(in srgb, var(--ink-dim) 22%, transparent) 1.6px, transparent 1.7px);
+    background-size:auto,30px 30px;
+  }
+  html[data-bg="gradient"] .slide::before{
+    background:
+      radial-gradient(circle at 14% 8%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 44%),
+      linear-gradient(150deg, color-mix(in srgb, var(--accent) 12%, transparent), transparent 46%),
+      linear-gradient(330deg, color-mix(in srgb, var(--accent) 6%, transparent), transparent 40%);
+  }
+  .pad{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;padding:54px 72px 44px}
+
+  /* header / footer rails */
+  .rail{flex-shrink:0;display:flex;justify-content:space-between;align-items:center;
+    font-family:var(--mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim)}
+  .rail--top{margin-bottom:26px}
+  .rail--bot{margin-top:26px;padding-top:14px;border-top:1px solid var(--line)}
+  .rail .n{color:var(--accent);font-weight:700}
+  .t-brand{color:var(--ink-soft);font-weight:600}
+
+  /* flexible middle – auto-fit operates here */
+  .fit{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center}
+  .fit-i{width:100%}
+
+  /* type scale (designed against the 720 canvas) */
+  .eyebrow{font-family:var(--mono);color:var(--accent);font-weight:700;text-transform:uppercase;
+    letter-spacing:.24em;font-size:15px;display:inline-flex;align-items:center;gap:12px}
+  .eyebrow::before{content:"";width:30px;height:2px;background:var(--accent)}
+  .title{font-family:var(--serif);font-weight:400;line-height:1.04;letter-spacing:-.015em;color:var(--ink)}
+  .title em{font-style:italic;color:var(--accent)}
+  h2.title{font-size:64px;max-width:24ch}
+  .lede{font-family:var(--serif);font-weight:400;font-size:25px;line-height:1.5;color:var(--ink-soft);max-width:74ch}
+  .lede strong{color:var(--ink);font-weight:600}
+  .lede em{color:var(--accent);font-style:italic}
+  .kicker{font-family:var(--serif);font-size:34px;line-height:1.28;color:var(--ink);max-width:30ch}
+  .kicker em{color:var(--accent);font-style:italic}
+
+  /* cover */
+  .cover .pad{justify-content:flex-start}
+  .cover .fit{justify-content:center}
+  .cover-title{font-family:var(--serif);font-weight:300;font-size:96px;line-height:.98;letter-spacing:-.02em;max-width:20ch}
+  .cover-title em{font-style:italic;color:var(--accent);font-weight:400}
+  .cover-lede{margin-top:30px;font-family:var(--serif);font-weight:300;font-size:27px;line-height:1.5;color:var(--ink-soft);max-width:70ch}
+  .cover-lede strong{color:var(--ink);font-weight:500}
+
+  /* numbered statement list */
+  .rows{display:flex;flex-direction:column}
+  .row{display:grid;grid-template-columns:84px 1fr;gap:30px;align-items:baseline;padding:22px 0;border-top:1px solid var(--line)}
+  .row:last-child{border-bottom:1px solid var(--line)}
+  .row .rn{font-family:var(--serif);font-style:italic;font-weight:300;font-size:52px;color:var(--accent);line-height:1}
+  .row h3{font-family:var(--serif);font-weight:500;font-size:27px;line-height:1.2;color:var(--ink);margin-bottom:5px}
+  .row p{font-size:19px;line-height:1.5;color:var(--ink-soft);max-width:80ch}
+  .row p em{color:var(--accent);font-style:italic}
+
+  /* cards / columns */
+  .cards{display:grid;gap:22px}
+  .cards.c2{grid-template-columns:1fr 1fr}
+  .cards.c3{grid-template-columns:1fr 1fr 1fr}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:28px 26px;display:flex;flex-direction:column}
+  .card .ci{font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:14px}
+  .card h3{font-family:var(--serif);font-weight:500;font-size:25px;line-height:1.18;color:var(--ink);margin-bottom:10px}
+  .card p{font-size:18px;line-height:1.5;color:var(--ink-soft)}
+
+  /* stat band */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .stat{border-left:3px solid var(--accent);padding-left:22px}
+  .stat .v{font-family:var(--serif);font-weight:400;font-size:62px;line-height:1;color:var(--ink);letter-spacing:-.02em}
+  .stat .k{margin-top:12px;font-size:18px;line-height:1.45;color:var(--ink-soft)}
+
+  /* comparison table → native PowerPoint table. Use a real <table>; the
+     converter rebuilds it as an editable <a:tbl> (rows can be added in PPT). */
+  .tbl{width:100%;border-collapse:collapse;font-family:var(--sans)}
+  .tbl caption{text-align:left;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:16px}
+  .tbl th,.tbl td{text-align:left;padding:14px 20px;border-bottom:1px solid var(--line);font-size:18px;line-height:1.35;color:var(--ink-soft)}
+  .tbl thead th{font-family:var(--serif);font-weight:600;font-size:19px;color:var(--ink);border-bottom:2px solid var(--accent)}
+  .tbl tbody tr:last-child td{border-bottom:none}
+  .tbl th:first-child,.tbl td:first-child{font-weight:600;color:var(--ink)}
+  .tbl .num{text-align:right;font-variant-numeric:tabular-nums}
+
+  /* chart → native, data-editable PowerPoint chart. Draw it as inline SVG for
+     the web/print, and put the numbers on data-unpaper-chart so the converter
+     rebuilds it natively (with a real Excel sheet). 1 chart, or 2–4 small
+     multiples side by side via .charts.c2 / .c3. */
+  .charts{display:grid;gap:34px}
+  .charts.c2{grid-template-columns:1fr 1fr}
+  .charts.c3{grid-template-columns:repeat(3,1fr)}
+  .chart{max-width:820px}            /* keep a lone chart within the fit area (no auto-fit scale, so it converts native) */
+  .charts .chart{max-width:none}     /* small multiples fill their grid cell */
+  .chart svg{width:100%;height:auto;display:block;overflow:visible}
+  .chart .clabel{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:10px}
+  .chart .cbar{fill:var(--accent)}
+  .chart .cgrid{stroke:var(--line-soft)}
+  .chart .ctick{fill:var(--ink-dim);font-family:var(--sans);font-size:14px}
+
+  .closing .fit{justify-content:center}
+
+  /* overflow flag – screen only, never printed */
+  .slide[data-overfull]::after{
+    content:"TRIM – content overflows this slide";position:absolute;left:50%;bottom:14px;transform:translateX(-50%);
+    z-index:9;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    color:#fff;background:#d4503b;padding:6px 12px;border-radius:999px;white-space:nowrap;
+  }
+
+  /* ─── floating toolbar (never prints) ──────────────────────────── */
+  .bar{position:fixed;z-index:60;left:50%;bottom:18px;transform:translateX(-50%);
+    display:flex;flex-wrap:nowrap;align-items:center;gap:3px;
+    max-width:calc(100vw - 16px);overflow-x:auto;scrollbar-width:none;padding:6px 7px;border-radius:999px;
+    background:rgba(12,20,28,.86);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12)}
+  .bar::-webkit-scrollbar{display:none}
+  .bar > *{flex:0 0 auto}
+  .bar button{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;
+    color:#dfe6ef;background:transparent;border:0;border-radius:999px;padding:7px 11px;cursor:pointer;transition:background .15s}
+  .bar button:hover{background:rgba(255,255,255,.12)}
+  .bar button.on{background:var(--accent);color:var(--accent-ink);font-weight:700}
+  .bar .sep{width:1px;height:18px;background:rgba(255,255,255,.16)}
+  .bar .dot{width:16px;height:16px;border-radius:50%;border:1px solid rgba(255,255,255,.3);cursor:pointer;padding:0}
+  .dot.midnight{background:#0d2030}.dot.paper{background:#fcfbf7}.dot.slate{background:#cdd6df}
+  .bar .nav{font-size:16px;line-height:1;padding:4px 9px}
+  .bar .count{font-family:var(--mono);font-size:11px;color:#9fb0c4;letter-spacing:.08em;min-width:40px;text-align:center}
+  /* keep the toolbar on one row on small phones: drop the theme dots + dividers so it fits */
+  @media (max-width:480px){ .bar{gap:2px} .bar .dot,.bar .sep{display:none} .bar button{padding:6px 9px} }
+
+  /* print tip popover (screen only) */
+  .tip{position:fixed;z-index:61;left:50%;bottom:66px;transform:translateX(-50%);
+    max-width:min(92vw,360px);background:rgba(12,20,28,.97);color:#dfe6ef;
+    border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:14px 16px;
+    font-family:var(--sans);font-size:13px;line-height:1.5;box-shadow:0 12px 44px rgba(0,0,0,.45)}
+  .tip[hidden]{display:none}
+  .tip strong{color:#fff;font-weight:600}
+  .tip .ti{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:7px}
+
+  .np{display:none}
+  body.present .bar .np{display:inline-flex;align-items:center}
+  body.present .bar span.np{display:inline-block}
+
+  /* ─── PRESENT MODE (one slide, fits the visible viewport, never clipped) ─ */
+  body.present{overflow:hidden}
+  body.present .deck{padding:0;gap:0}
+  body.present .slide-frame{display:none}
+  body.present .slide-frame.live{display:flex;position:fixed;top:0;left:0;width:100%;height:100dvh;
+    align-items:center;justify-content:center;overflow:hidden;z-index:40;background:var(--bg-2)}
+  /* keep the slide at its true 1280×720 inside the flex frame – never let it shrink to the viewport */
+  body.present .slide-frame.live .slide{flex:0 0 auto}
+
+  /* ─── PRINT – every slide is exactly one 16:9 page ─────────────── */
+  @page{size:338.67mm 190.5mm;margin:0}
+  @media print{
+    html,body{background:#fff}
+    .deck{display:block;padding:0;gap:0}
+    .slide-frame{width:auto;display:block!important}
+    .slide{transform:none!important;width:1280px;height:720px;box-shadow:none;border-radius:0;
+      break-after:page;page-break-after:always}
+    .slide-frame:last-child .slide{break-after:auto;page-break-after:auto}
+    .bar,.tip,.slide[data-overfull]::after{display:none!important}
+    *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <!-- ═══ 01 · COVER ═══ -->
+  <div class="slide-frame"><section class="slide cover" data-kind="cover">
+    <div class="pad">
+      <div class="rail rail--top"><span class="eyebrow t-eye"></span><span class="t-brand"></span></div>
+      <div class="fit"><div class="fit-i">
+        <h1 class="cover-title">The format AI is <em>actually</em> good at</h1>
+        <p class="cover-lede">Stop asking for PowerPoint. Ask any AI for <strong>print-ready HTML</strong>, drop it back into unPaper, and save a flawless 16:9 PDF.</p>
+      </div></div>
+      <div class="rail rail--bot"><span class="t-foot"></span><span class="t-ref"></span></div>
+    </div>
+  </section></div>
+
+  <!-- ═══ 02 · ONE BIG STATEMENT ═══ -->
+  <div class="slide-frame"><section class="slide" data-kind="statement">
+    <div class="pad">
+      <div class="rail rail--top"><span><span class="n">02</span> The idea</span><span class="t-brand"></span></div>
+      <div class="fit"><div class="fit-i">
+        <span class="eyebrow">Why HTML</span>
+        <p class="kicker" style="margin-top:22px">AI edits <em>text</em> far more reliably than it edits <em>.pptx</em>. So make slides out of text, then let the browser print them.</p>
+      </div></div>
+      <div class="rail rail--bot"><span class="t-foot"></span><span>02 / 08</span></div>
+    </div>
+  </section></div>
+
+  <!-- ═══ 03 · NUMBERED LIST ═══ -->
+  <div class="slide-frame"><section class="slide" data-kind="list">
+    <div class="pad">
+      <div class="rail rail--top"><span><span class="n">03</span> How it works</span><span class="t-brand"></span></div>
+      <div class="fit"><div class="fit-i">
+        <div class="rows">
+          <div class="row"><div class="rn">1</div><div><h3>Start from this template</h3><p>Copy the starter prompt; these rules travel <em>inside</em> the file.</p></div></div>
+          <div class="row"><div class="rn">2</div><div><h3>Describe your content to any AI</h3><p>Claude, ChatGPT or Gemini fills the slides and keeps the print CSS intact.</p></div></div>
+          <div class="row"><div class="rn">3</div><div><h3>Paste it back &amp; save PDF</h3><p>Preview here, then <em>Cmd/Ctrl+P → Save as PDF</em>. One slide, one page.</p></div></div>
+        </div>
+      </div></div>
+      <div class="rail rail--bot"><span class="t-foot"></span><span>03 / 08</span></div>
+    </div>
+  </section></div>
+
+  <!-- ═══ 04 · CARDS (2–3 max) ═══ -->
+  <div class="slide-frame"><section class="slide" data-kind="cards">
+    <div class="pad">
+      <div class="rail rail--top"><span><span class="n">04</span> What you get</span><span class="t-brand"></span></div>
+      <div class="fit"><div class="fit-i">
+        <div class="cards c3">
+          <div class="card"><div class="ci">Self-contained</div><h3>One file, no CDNs</h3><p>Fonts, styles and script are inline. It prints the same offline, forever.</p></div>
+          <div class="card"><div class="ci">Fits the page</div><h3>Never overflows</h3><p>A fixed 16:9 canvas auto-fits content and flags any slide that runs long.</p></div>
+          <div class="card"><div class="ci">Yours to remix</div><h3>A starting point</h3><p>Recolour, add a logo and rewrite with your own AI. The format is solved.</p></div>
+        </div>
+      </div></div>
+      <div class="rail rail--bot"><span class="t-foot"></span><span>04 / 08</span></div>
+    </div>
+  </section></div>
+
+  <!-- ═══ 05 · CHART (native, data-editable) — inline SVG for the web; the
+       numbers live on data-unpaper-chart so the converter rebuilds it as a real
+       PowerPoint chart with an editable Excel sheet ═══ -->
+  <div class="slide-frame"><section class="slide" data-kind="chart">
+    <div class="pad">
+      <div class="rail rail--top"><span><span class="n">05</span> The numbers</span><span class="t-brand"></span></div>
+      <div class="fit"><div class="fit-i">
+        <h2 class="title" style="font-size:38px;margin-bottom:6px">Adoption tripled once the rules moved <em>inside</em> the file</h2>
+        <p class="lede" style="font-size:19px;margin-bottom:22px">Decks generated per week, by quarter.</p>
+        <div class="chart" data-unpaper-chart='{"type":"bar","categories":["Q1","Q2","Q3","Q4"],"series":[{"name":"Decks / week","values":[120,210,340,520],"color":"F0B429"}],"axis":{"min":0,"max":600}}'>
+          <svg viewBox="0 0 760 320" role="img" aria-label="Decks generated per week by quarter">
+            <line class="cgrid" x1="0" y1="270" x2="760" y2="270" stroke-width="1.5"/>
+            <rect class="cbar" x="35"  y="220"  width="120" height="50"  rx="3"/>
+            <rect class="cbar" x="225" y="182"  width="120" height="88"  rx="3"/>
+            <rect class="cbar" x="415" y="128"  width="120" height="142" rx="3"/>
+            <rect class="cbar" x="605" y="53"   width="120" height="217" rx="3"/>
+            <text class="ctick" x="95"  y="296" text-anchor="middle">Q1</text>
+            <text class="ctick" x="285" y="296" text-anchor="middle">Q2</text>
+            <text class="ctick" x="475" y="296" text-anchor="middle">Q3</text>
+            <text class="ctick" x="665" y="296" text-anchor="middle">Q4</text>
+          </svg>
+        </div>
+      </div></div>
+      <div class="rail rail--bot"><span class="t-foot"></span><span>05 / 08</span></div>
+    </div>
+  </section></div>
+
+  <!-- ═══ 06 · COMPARISON TABLE (native) — a real <table> becomes an editable
+       PowerPoint table; rows/cells stay native (add a row inside PPT) ═══ -->
+  <div class="slide-frame"><section class="slide" data-kind="table">
+    <div class="pad">
+      <div class="rail rail--top"><span><span class="n">06</span> Compare</span><span class="t-brand"></span></div>
+      <div class="fit"><div class="fit-i">
+        <h2 class="title" style="font-size:38px;margin-bottom:22px">unPaper keeps the layout other tools throw away</h2>
+        <table class="tbl">
+          <caption>HTML → PowerPoint, by approach</caption>
+          <thead><tr><th>Approach</th><th>Layout</th><th>Editable</th><th>Stays on your laptop</th></tr></thead>
+          <tbody>
+            <tr><td>Screenshot import</td><td>Looks right</td><td>No</td><td>No</td></tr>
+            <tr><td>LibreOffice round-trip</td><td>Reflows</td><td>Text only</td><td>No</td></tr>
+            <tr><td>unPaper</td><td>Exact</td><td>Everything</td><td>Yes</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+      <div class="rail rail--bot"><span class="t-foot"></span><span>06 / 08</span></div>
+    </div>
+  </section></div>
+
+  <!-- ═══ 07 · STATS ═══ -->
+  <div class="slide-frame"><section class="slide" data-kind="stats">
+    <div class="pad">
+      <div class="rail rail--top"><span><span class="n">07</span> Proof</span><span class="t-brand"></span></div>
+      <div class="fit"><div class="fit-i">
+        <h2 class="title" style="font-size:40px;margin-bottom:34px">Built for the way you <em>actually</em> ship documents</h2>
+        <div class="stats">
+          <div class="stat"><div class="v">16:9</div><div class="k">Exact PowerPoint page, prints with zero margins.</div></div>
+          <div class="stat"><div class="v">0</div><div class="k">External assets. Nothing to break, nothing to load.</div></div>
+          <div class="stat"><div class="v">1&nbsp;file</div><div class="k">Hand it to any AI; the rules ride along inside.</div></div>
+        </div>
+      </div></div>
+      <div class="rail rail--bot"><span class="t-foot"></span><span>07 / 08</span></div>
+    </div>
+  </section></div>
+
+  <!-- ═══ 08 · CLOSING ═══ -->
+  <div class="slide-frame"><section class="slide closing" data-kind="closing">
+    <div class="pad">
+      <div class="rail rail--top"><span><span class="n">08</span> Close</span><span class="t-brand"></span></div>
+      <div class="fit"><div class="fit-i">
+        <span class="eyebrow">Your turn</span>
+        <h2 class="title" style="margin-top:20px">Replace this with <em>your</em> idea, then print it.</h2>
+        <p class="lede" style="margin-top:24px">Made with unPaper · <strong>unrsnbl.ai/unpaper</strong></p>
+      </div></div>
+      <div class="rail rail--bot"><span class="t-foot"></span><span>08 / 08</span></div>
+    </div>
+  </section></div>
+
+</div>
+
+<!-- toolbar – remove this whole block if you don't want it. It never prints. -->
+<div class="bar" id="bar">
+  <button id="mScroll" class="on">Scroll</button>
+  <button id="mPresent">Present</button>
+  <span class="sep np"></span>
+  <button id="prev" class="nav np" title="Previous (←)">‹</button>
+  <span id="count" class="count np">1 / 6</span>
+  <button id="next" class="nav np" title="Next (→)">›</button>
+  <span class="sep"></span>
+  <button class="dot midnight" data-t="midnight" title="Midnight"></button>
+  <button class="dot paper" data-t="paper" title="Paper"></button>
+  <button class="dot slate" data-t="slate" title="Slate"></button>
+  <span class="sep"></span>
+  <button id="bPrint">Save PDF</button>
+  <button id="bInfo" class="nav" title="How to save a clean PDF" aria-label="How to save a PDF">?</button>
+</div>
+
+<!-- print help (screen only) -->
+<div class="tip" id="tip" hidden>
+  <span class="ti">Save as PDF</span>
+  <strong>Computer:</strong> press Cmd / Ctrl + P → “Save as PDF”.<br>
+  <strong>Phone:</strong> tap ⋯ or the Share icon → Print → Save as PDF.<br>
+  For a clean result, open this file in <strong>Chrome or Safari</strong>. Printing from inside
+  a chat app’s built-in browser often looks wrong. Leave margins on Default and turn on
+  “Background graphics”.
+</div>
+
+<script>
+/* unPaper slide engine – header/footer fill, scaling, auto-fit, present mode. Do not remove. */
+(function(){
+  var DESIGN_W=1280, DESIGN_H=720, FLOOR=0.4;
+  var frames=[].slice.call(document.querySelectorAll('.slide-frame'));
+
+  /* use the *visible* viewport so mobile address bars / in-app browsers can't clip the slide */
+  function vv(){var v=window.visualViewport;return v?{w:v.width,h:v.height}:{w:window.innerWidth,h:window.innerHeight};}
+  function barReserve(){var b=document.getElementById('bar');return b?b.offsetHeight+30:80;}
+
+  function fillMeta(){
+    var d=document.documentElement.dataset;
+    document.querySelectorAll('.t-eye').forEach(function(e){e.textContent=d.eyebrow||''});
+    document.querySelectorAll('.t-brand').forEach(function(e){e.textContent=d.brand||''});
+    document.querySelectorAll('.t-foot').forEach(function(e){e.textContent=d.foot||''});
+    document.querySelectorAll('.t-ref').forEach(function(e){e.textContent=d.ref||''});
+  }
+  function scaleToFrames(){
+    var present=document.body.classList.contains('present');
+    var v=vv(), reserve=present?barReserve():0;
+    frames.forEach(function(f){
+      var slide=f.querySelector('.slide'), s;
+      if(present){
+        /* contain the whole slide inside the visible area – shrink to fit, never clip */
+        s=Math.min((v.w-24)/DESIGN_W, (v.h-reserve-16)/DESIGN_H);
+        if(!(s>0))s=0.1;
+        slide.style.transformOrigin='center center';
+        slide.style.transform='scale('+s+')';
+        f.style.paddingTop='8px';f.style.paddingBottom=reserve+'px';f.style.height='';
+      }else{
+        s=f.clientWidth/DESIGN_W;
+        slide.style.transformOrigin='top left';
+        slide.style.transform='scale('+s+')';
+        f.style.paddingTop='';f.style.paddingBottom='';f.style.height=(DESIGN_H*s)+'px';
+      }
+    });
+  }
+  function autofit(){
+    frames.forEach(function(f){
+      var slide=f.querySelector('.slide');
+      slide.querySelectorAll('.fit').forEach(function(fit){
+        var inner=fit.querySelector('.fit-i'); if(!inner)return;
+        inner.style.transform='';inner.style.width='';
+        var avail=fit.clientHeight, need=inner.scrollHeight, s=1;
+        if(need>avail+1){ s=Math.max(FLOOR, avail/need);   /* shrink content to fully fit – never clip */
+          inner.style.transformOrigin='top left';
+          inner.style.transform='scale('+s+')';
+          inner.style.width=(100/s)+'%';
+        }
+        if(s<0.86) slide.setAttribute('data-overfull',''); else slide.removeAttribute('data-overfull');
+      });
+    });
+  }
+  function refit(){fillMeta();autofit();scaleToFrames();}
+
+  /* present-mode navigation */
+  var cur=0;
+  function show(i){
+    cur=Math.max(0,Math.min(frames.length-1,i));
+    frames.forEach(function(f,k){f.classList.toggle('live',k===cur)});
+    var c=document.getElementById('count');if(c)c.textContent=(cur+1)+' / '+frames.length;
+    scaleToFrames();
+  }
+  function setMode(present){
+    document.body.classList.toggle('present',present);
+    document.getElementById('mPresent').classList.toggle('on',present);
+    document.getElementById('mScroll').classList.toggle('on',!present);
+    if(present)show(cur); else frames.forEach(function(f){f.classList.remove('live')});
+    refit();
+  }
+  document.getElementById('mPresent').onclick=function(){setMode(true)};
+  document.getElementById('mScroll').onclick=function(){setMode(false)};
+  document.getElementById('prev').onclick=function(){show(cur-1)};
+  document.getElementById('next').onclick=function(){show(cur+1)};
+  document.getElementById('bPrint').onclick=function(){var p=document.body.classList.contains('present');setMode(false);setTimeout(function(){window.print();if(p)setMode(true)},80)};
+  var tip=document.getElementById('tip');
+  document.getElementById('bInfo').onclick=function(){if(tip)tip.hidden=!tip.hidden;};
+
+  [].slice.call(document.querySelectorAll('.dot')).forEach(function(d){
+    d.onclick=function(){document.documentElement.setAttribute('data-theme',d.getAttribute('data-t'));requestAnimationFrame(refit)};
+  });
+  window.addEventListener('keydown',function(e){
+    if(!document.body.classList.contains('present'))return;
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' ')show(cur+1);
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp')show(cur-1);
+    if(e.key==='Escape')setMode(false);
+  });
+  /* swipe between slides in present mode (phones) */
+  var tx=0,ty=0;
+  window.addEventListener('touchstart',function(e){var t=e.changedTouches[0];tx=t.clientX;ty=t.clientY;},{passive:true});
+  window.addEventListener('touchend',function(e){
+    if(!document.body.classList.contains('present'))return;
+    var t=e.changedTouches[0],dx=t.clientX-tx,dy=t.clientY-ty;
+    if(Math.abs(dx)>48&&Math.abs(dx)>Math.abs(dy))show(dx<0?cur+1:cur-1);
+  },{passive:true});
+
+  window.addEventListener('resize',refit);
+  window.addEventListener('orientationchange',function(){setTimeout(refit,180)});
+  if(window.visualViewport){window.visualViewport.addEventListener('resize',refit);window.visualViewport.addEventListener('scroll',refit);}
+  window.addEventListener('load',refit);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(refit);
+  if(location.hash==='#present'){setMode(true);}else{refit();}  /* open …/slides.html#present to start in present mode */
+})();
+</script>
+</body>
+</html>

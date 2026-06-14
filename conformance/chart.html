@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>corpus: chart-svg</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#555}
+  @page{size:1280px 720px;margin:0}
+  .slide{width:1280px;height:720px;background:#10141a;color:#e8eaed;
+    font-family:Helvetica,Arial,sans-serif;position:relative;overflow:hidden;
+    padding:64px 80px;margin:0 auto}
+  h1{font-family:Georgia,serif;font-size:44px;font-weight:400;margin-bottom:8px}
+  .sub{font-size:15px;color:#9aa3ad;margin-bottom:30px}
+  .row{display:flex;gap:48px;align-items:flex-start}
+  .chart{background:#161c23;border-radius:14px;padding:24px}
+  .legend{display:flex;gap:20px;margin-top:12px;font-size:13px;color:#c3cad1}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+</style>
+</head>
+<body>
+
+<section class="slide">
+  <h1>Charts as static SVG</h1>
+  <p class="sub">Drawn by hand, no script. Today: one vector picture. Phase 3: native, data-editable charts
+    via the data-unpaper-chart contract.</p>
+  <div class="row">
+    <div class="chart"
+      data-unpaper-chart='{"type":"bar","categories":["Q1","Q2","Q3","Q4"],"series":[{"name":"Revenue","values":[4.2,5.1,4.8,6.3],"color":"F0B429"},{"name":"Costs","values":[3.1,3.4,3.2,3.8],"color":"475569"}],"axis":{"min":0,"max":8}}'>
+      <svg width="520" height="300" viewBox="0 0 520 300" font-family="Helvetica,Arial,sans-serif">
+        <line x1="50" y1="10" x2="50" y2="260" stroke="#3a4350" stroke-width="1"/>
+        <line x1="50" y1="260" x2="500" y2="260" stroke="#3a4350" stroke-width="1"/>
+        <text x="40" y="265" font-size="11" fill="#8a939c" text-anchor="end">0</text>
+        <text x="40" y="140" font-size="11" fill="#8a939c" text-anchor="end">4</text>
+        <text x="40" y="20" font-size="11" fill="#8a939c" text-anchor="end">8</text>
+        <rect x="80"  y="129" width="40" height="131" fill="#f0b429"/>
+        <rect x="124" y="163" width="40" height="97"  fill="#475569"/>
+        <rect x="190" y="101" width="40" height="159" fill="#f0b429"/>
+        <rect x="234" y="154" width="40" height="106" fill="#475569"/>
+        <rect x="300" y="110" width="40" height="150" fill="#f0b429"/>
+        <rect x="344" y="160" width="40" height="100" fill="#475569"/>
+        <rect x="410" y="63"  width="40" height="197" fill="#f0b429"/>
+        <rect x="454" y="141" width="40" height="119" fill="#475569"/>
+        <text x="122" y="280" font-size="12" fill="#c3cad1" text-anchor="middle">Q1</text>
+        <text x="232" y="280" font-size="12" fill="#c3cad1" text-anchor="middle">Q2</text>
+        <text x="342" y="280" font-size="12" fill="#c3cad1" text-anchor="middle">Q3</text>
+        <text x="452" y="280" font-size="12" fill="#c3cad1" text-anchor="middle">Q4</text>
+      </svg>
+      <div class="legend">
+        <span><span class="dot" style="background:#f0b429"></span>Revenue</span>
+        <span><span class="dot" style="background:#475569"></span>Costs</span>
+      </div>
+    </div>
+    <div class="chart"
+      data-unpaper-chart='{"type":"doughnut","categories":["Won","Open","Lost"],"series":[{"name":"Deals","values":[58,27,15]}],"colors":["34D399","F0B429","475569"]}'>
+      <svg width="240" height="240" viewBox="0 0 42 42">
+        <circle cx="21" cy="21" r="15.9" fill="none" stroke="#475569" stroke-width="6"/>
+        <circle cx="21" cy="21" r="15.9" fill="none" stroke="#f0b429" stroke-width="6"
+          stroke-dasharray="27 73" stroke-dashoffset="-58" transform="rotate(-90 21 21)"/>
+        <circle cx="21" cy="21" r="15.9" fill="none" stroke="#34d399" stroke-width="6"
+          stroke-dasharray="58 42" transform="rotate(-90 21 21)"/>
+        <text x="21" y="23.5" font-size="8" fill="#ffffff" text-anchor="middle" font-family="Helvetica,Arial,sans-serif">58%</text>
+      </svg>
+      <div class="legend">
+        <span><span class="dot" style="background:#34d399"></span>Won</span>
+        <span><span class="dot" style="background:#f0b429"></span>Open</span>
+        <span><span class="dot" style="background:#475569"></span>Lost</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

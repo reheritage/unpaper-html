@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>corpus: gradients</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#555}
+  @page{size:1280px 720px;margin:0}
+  .slide{width:1280px;height:720px;background:#10141a;color:#eef1f4;
+    font-family:Helvetica,Arial,sans-serif;position:relative;overflow:hidden;
+    padding:64px 80px;margin:0 auto}
+  h1{font-family:Georgia,serif;font-size:46px;font-weight:400;margin-bottom:36px}
+  .row{display:flex;gap:24px}
+  .panel{flex:1;height:220px;border-radius:14px;padding:22px;font-size:15px;font-weight:700}
+  .g1{background:linear-gradient(180deg,#f0b429,#d97706)}
+  .g2{background:linear-gradient(90deg,#1d4ed8,#7c3aed);color:#fff}
+  .g3{background:linear-gradient(135deg,rgba(240,180,41,.9) 0%,rgba(240,180,41,0) 70%);border:1px solid #3a4350}
+  .g4{background:radial-gradient(circle at 30% 30%,#34d399,#0f766e);color:#06281f}
+  .caption{margin-top:14px;font-size:14px;color:#9aa3ad}
+  .ribbon{margin-top:40px;height:90px;border-radius:10px;
+    background:linear-gradient(45deg,#111827 0%,#374151 50%,#f0b429 100%);
+    display:flex;align-items:center;padding:0 28px;font-size:18px;font-weight:700}
+</style>
+</head>
+<body>
+
+<section class="slide">
+  <h1>Gradient fills, four ways</h1>
+  <div class="row">
+    <div class="panel g1">Top to bottom, 180 degrees</div>
+    <div class="panel g2">Left to right, 90 degrees</div>
+    <div class="panel g3">Diagonal fade to transparent</div>
+    <div class="panel g4">Radial — stays in the capture today</div>
+  </div>
+  <p class="caption">The first three become native DrawingML gradFill definitions. The radial one is a
+    known rung-one case until Phase 4 lands.</p>
+  <div class="ribbon">Three-stop diagonal ribbon with text on top</div>
+</section>
+
+</body>
+</html>

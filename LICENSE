@@ -1,0 +1,22 @@
+Copyright (c) reHeritage GmbH (Berlin, Germany).
+
+The unPaper HTML specification and the example and conformance documents in this
+repository are licensed under the Creative Commons Attribution 4.0 International
+License (CC BY 4.0).
+
+You are free to share and adapt this material for any purpose, including
+commercially, provided you give appropriate credit to reHeritage GmbH, provide a
+link to the license, and indicate if changes were made.
+
+The full license text is available at:
+  https://creativecommons.org/licenses/by/4.0/legalcode
+
+A human-readable summary is at:
+  https://creativecommons.org/licenses/by/4.0/
+
+SPDX-License-Identifier: CC-BY-4.0
+
+Note: This license covers the specification text and the example/conformance
+documents only. It does NOT grant any rights in the "unPaper" or "unPaper HTML"
+names or trademarks, and it does NOT cover the unPaper converter software, which
+is a separate product of reHeritage GmbH governed by its own terms.
