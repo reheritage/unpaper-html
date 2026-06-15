@@ -117,6 +117,36 @@ the geometry permits, native freeform shapes. Authors **SHOULD** keep one idea p
 slide and **SHOULD NOT** rely on visual tricks that have no native equivalent
 (see §7).
 
+### 5.1 Layout grammar — `data-unpaper-lay`
+
+To compose a slide as a grid of regions rather than a single stack, a container
+**MAY** carry a `data-unpaper-lay` attribute. Each direct child of that container is
+then a region that **MAY** hold any block — text, a list, a chart, a table, a card.
+A converter **MUST** convert each region to native objects at its measured position,
+so a multi-region layout costs one attribute and no extra positioning markup.
+
+The defined values are:
+
+| Value | Layout |
+| --- | --- |
+| `2` | Two equal columns. |
+| `2l` | Two columns, wide left + narrow right. |
+| `2r` | Two columns, narrow left + wide right. |
+| `3` | Three equal columns. |
+| `rail` | A narrow label rail + a wide main region. |
+| `quad` | A 2×2 grid of four regions. |
+
+```html
+<div data-unpaper-lay="2l">
+  <div> …text and bullets… </div>
+  <div data-unpaper-chart='…'> …chart svg… </div>
+</div>
+```
+
+A converter that does not recognise a `data-unpaper-lay` value **MUST** fall back to
+laying the regions out by their measured geometry (L1 behaviour), so an unknown
+value never breaks the conversion.
+
 ## 6. The data contract (L3)
 
 A visual whose data the author wants to remain editable **MUST** carry that data as
