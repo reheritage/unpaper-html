@@ -3,10 +3,10 @@ id: C16
 family: consulting
 name: Scorecard / Harvey balls
 version: 1
-status: draft
+status: shipped
 unpaper_level: L3
-supported_by_current_template: false
-converter_ready: false
+supported_by_current_template: true
+converter_ready: true
 tokens_compact: 75
 ---
 
@@ -29,8 +29,9 @@ three-quarter, full = 0 / 25 / 50 / 75 / 100%), or a red-amber-green status.
 
 ## Structure
 
-- A real `<table>`: options as rows, criteria as columns (transpose if there are
-  more criteria than options). Keep to ≈6 columns × 8 rows.
+- A grid of options (rows) × criteria (columns) — a flex/CSS grid today, a real
+  `<table>` once the converter can layer balls above a native table object (see
+  Conversion). Keep to ≈6 columns × 8 rows.
 - Each rating cell carries **`data-unpaper-rating`** — a number `0`–`1` (the
   fraction filled) — **and** an inline SVG Harvey ball drawn to match. Dual
   encoding, per `spec.md` §6: the SVG renders and prints, the attribute carries the
@@ -45,14 +46,19 @@ three-quarter, full = 0 / 25 / 50 / 75 / 100%), or a red-amber-green status.
 - per-cell `data-unpaper-rating="0..1"` + an inline `<svg>` pie (the visual encoding)
 - `.legend`, `.source`
 
-## Conversion target (converter work — first signature exhibit)
+## Conversion (SHIPPED — the first consulting-visual-compiler exhibit)
 
-Each cell's Harvey ball lowers to a **native PowerPoint pie shape** (an arc/pie
-whose swept angle = `rating × 360°`) seated inside the native table cell — so every
-rating is movable and re-rateable in PowerPoint, not a flat picture. Until the
-converter ships this pass, the ball converts as a vector/freeform shape (L2) and
-the rating attribute is advisory. This is the first exhibit of the
-consulting-visual compiler.
+Each Harvey ball lowers to **native, recolorable PowerPoint shapes**: an outline
+ring plus a filled pie sector whose swept angle = `rating × 360°` (clockwise from
+12 o'clock), built as `custGeom` freeforms via the proven arc/patch path — so the
+build and patch passes needed no change. The labels convert as native text, and
+`currentColor` drives the balls so they take the deck accent. Verified end to end
+in the harness (`test/corpus/scorecard.html`, 99.50%; XML asserts `custGeom` +
+`arcTo`, no `blip`). Implemented in `extract.mjs` as the `data-unpaper-rating`
+pass (2026-06-23). A single native PPTX **table object** with the balls overlaid
+is a planned refinement (the builder emits freeforms before tables, so a table
+would occlude them); today the scorecard is a grid of native text + native ball
+shapes.
 
 ## Prompt fragment (compact)
 
