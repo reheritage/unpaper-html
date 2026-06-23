@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "format": "unPaper HTML",
+  "steward": "reHeritage GmbH",
+  "license": "CC-BY-4.0",
+  "note": "A generator inlines the compact_prompt fragments of the selected patterns into its prompt. It MUST NOT depend on fetching this file at run time; links are optional enrichment. Patterns with converter_ready=false are held back from prompt packs until the converter supports them.",
+  "support_legend": { "native": "converts to native objects today", "partial": "converts, but a dedicated pattern/converter pass would improve it", "gap": "needs converter work before it converts well" },
+  "families": [
+    {
+      "id": "consulting",
+      "label": "Consulting / strategy",
+      "status": "in-progress",
+      "family_rule": "Action titles: each slide title is a full-sentence finding, and the titles read top-to-bottom as the whole argument. One message per slide. Answer first (pyramid), then MECE support, then next steps. Evidence sits beside its claim; every data slide carries a 'Source:' line. Colour directs attention, it does not decorate.",
+      "mvp": ["C02", "C05", "C06", "C07", "C08", "C12", "C13", "C15", "C16", "C18", "C20", "C23", "C30"],
+      "archetypes": [
+        { "id": "boardroom-classic", "name": "Boardroom Classic", "best_for": "recommendations, value cases, market sizing, M&A logic", "visual_language": "white, restrained, dense evidence, footnotes, blue/grey accent", "pattern_emphasis": ["C05", "C06", "C08", "C10", "C12", "C13", "C15", "C16", "C24", "C30"] },
+        { "id": "modern-insight", "name": "Modern Insight", "best_for": "research readouts, thought leadership, executive insight", "visual_language": "open whitespace, simple charts, one confident accent, few boxes, small multiples", "pattern_emphasis": ["C02", "C06", "C07", "C10", "C12", "C18", "C29", "C32"] },
+        { "id": "operator-redline", "name": "Operator Redline", "best_for": "commercial strategy, market studies, pragmatic recommendations", "visual_language": "strong top rule, red accent used sparingly, direct ranked charts, source/confidentiality footer", "pattern_emphasis": ["C05", "C06", "C08", "C11", "C15", "C23", "C28", "C30"] },
+        { "id": "research-bureau", "name": "Research Bureau", "best_for": "public research, survey decks, institute reports", "visual_language": "chapter navigation, full-bleed section dividers with a large numeral, methodology, report flow", "pattern_emphasis": ["C02", "C04", "C07", "C11", "C16", "C28", "C32", "C33"] },
+        { "id": "systems-blueprint", "name": "Systems Blueprint", "best_for": "transformation, operating models, PMO, implementation", "visual_language": "modular boxes, swimlanes, capability maps, more tables and diagrams, strong section labels", "pattern_emphasis": ["C17", "C18", "C19", "C20", "C21", "C22", "C23", "C25", "C27"] },
+        { "id": "executive-brief", "name": "Executive Brief", "best_for": "leadership updates, macro briefings, board memos", "visual_language": "blue/neutral accent, dense-but-readable memo slides, executive summaries, section dividers, strict hierarchy", "pattern_emphasis": ["C02", "C05", "C06", "C10", "C15", "C25", "C30", "C33"] }
+      ],
+      "patterns": [
+        { "id": "C01", "name": "Cover / document title", "job": "Set topic, client, date, confidentiality", "support": "native", "level": "L1", "mvp": false },
+        { "id": "C02", "name": "Executive summary", "job": "State the recommendation and 3-5 reasons", "support": "partial", "level": "L2", "mvp": true, "converter_ready": true, "primitives": ["h2.title", "data-unpaper-lay=2l", ".stats", "ol/li"], "compact_prompt": "Executive summary: open with the recommendation in one bold line, then 3-5 supporting findings as a numbered list or a stat row. State the answer first; the rest of the deck defends it." },
+        { "id": "C03", "name": "Agenda / storyline", "job": "Preview the argument structure", "support": "native", "level": "L2", "mvp": false },
+        { "id": "C04", "name": "Section divider", "job": "Mark a chapter shift", "support": "native", "level": "L1", "mvp": false },
+        { "id": "C05", "name": "Action-title evidence slide", "job": "Put one claim and its proof together", "support": "native", "level": "L2", "mvp": true, "converter_ready": true, "primitives": ["h2.title", "data-unpaper-lay=2l", "data-unpaper-chart", "table", ".source"], "compact_prompt": "Action-title evidence slide: the title states the finding as a full sentence; use data-unpaper-lay='2l' with a short so-what (2-3 bullets) on the left and ONE proof object (chart or table) on the right; put a 'Source:' line directly under the evidence." },
+        { "id": "C06", "name": "Single chart proof", "job": "One chart carries the point", "support": "native", "level": "L3", "mvp": true, "converter_ready": true, "primitives": ["data-unpaper-chart", "h2.title", ".source"], "compact_prompt": "Single chart proof: one data-unpaper-chart carries the whole point; the title states what the chart proves; one source line below; no second visual." },
+        { "id": "C07", "name": "Small multiples", "job": "Compare several charts on one scale", "support": "native", "level": "L3", "mvp": true, "converter_ready": true, "primitives": ["data-unpaper-lay=2|3", "data-unpaper-chart", ".source"], "compact_prompt": "Small multiples: 2-4 charts of the SAME type and identical scale side by side (data-unpaper-lay='2' or '3') to compare segments or periods; one shared source line." },
+        { "id": "C08", "name": "Waterfall / bridge", "job": "Explain change from baseline to outcome", "support": "gap", "level": "L3", "mvp": true, "converter_ready": false, "primitives": ["data-unpaper-diagram(waterfall)", "inline svg bars"], "compact_prompt": "Waterfall/bridge: show how a total moves from a start value to an end value through +/- steps, with running-total bars and connectors; label each step's delta and the start/end totals." },
+        { "id": "C09", "name": "Variance decomposition", "job": "Break a total into drivers", "support": "partial", "level": "L3", "mvp": false },
+        { "id": "C10", "name": "KPI stat row", "job": "Anchor the story in 2-4 numbers", "support": "native", "level": "L2", "mvp": false },
+        { "id": "C11", "name": "Benchmark ranking", "job": "Rank companies, countries, segments, options", "support": "native", "level": "L3", "mvp": false },
+        { "id": "C12", "name": "Market map / 2x2", "job": "Position options on two axes", "support": "native", "level": "L2", "mvp": true, "converter_ready": true, "primitives": [".matrix.axes", ".quad", ".mxlabel"], "compact_prompt": "2x2 matrix: position options on two named axes using the matrix block (.matrix.axes) with four quadrants, clear axis labels, and the priority cell marked; plot 4-8 items max." },
+        { "id": "C13", "name": "Issue tree", "job": "Break a problem into MECE branches", "support": "partial", "level": "L2", "mvp": true, "converter_ready": true, "primitives": [".orgtree", ".org-node"], "compact_prompt": "Issue tree: break the question into MECE branches (a parent box over 2-4 child boxes, each splitting further if needed) using the org/tree block; branches must be mutually exclusive and collectively exhaustive." },
+        { "id": "C14", "name": "Driver tree / equation", "job": "Show how value decomposes", "support": "partial", "level": "L2", "mvp": false },
+        { "id": "C15", "name": "Option comparison", "job": "Compare options by criteria", "support": "native", "level": "L2", "mvp": true, "converter_ready": true, "primitives": ["table.tbl", "thead", "tbody"], "compact_prompt": "Option comparison: a real <table> with options as rows and criteria as columns (<=6 columns); mark the recommended row or column; one source line below." },
+        { "id": "C16", "name": "Scorecard / Harvey balls", "job": "Rate options qualitatively across criteria", "support": "gap", "level": "L3", "mvp": true, "converter_ready": false, "primitives": ["table.tbl", "data-unpaper-rating", "inline svg pie", ".legend", ".source"], "compact_prompt": "Scorecard: a real <table> of options x criteria; each cell a Harvey-ball rating (data-unpaper-rating 0-1, drawn as a filled-pie SVG: empty, quarter, half, three-quarter, full) or a RAG colour; add a one-line legend and a source line." },
+        { "id": "C17", "name": "Maturity ladder", "job": "Show levels from current to target state", "support": "partial", "level": "L2", "mvp": false },
+        { "id": "C18", "name": "Roadmap / phases", "job": "Sequence work over time", "support": "native", "level": "L2", "mvp": true, "converter_ready": true, "primitives": [".timeline", ".tl-step", ".when"], "compact_prompt": "Roadmap: 3-5 phases over time using the timeline block, each with a date/label and 1-2 outcomes, laid out left to right." },
+        { "id": "C19", "name": "Workplan / Gantt-lite", "job": "Show activities across phases", "support": "gap", "level": "L2", "mvp": false },
+        { "id": "C20", "name": "Process flow", "job": "Explain ordered steps", "support": "native", "level": "L2", "mvp": true, "converter_ready": true, "primitives": [".flow", ".node", "svg.arrow"], "compact_prompt": "Process flow: 3-5 ordered steps joined by arrows using the flow block; one short label per step; arrows in the accent colour." },
+        { "id": "C21", "name": "Operating model", "job": "Show capabilities, roles, interfaces", "support": "partial", "level": "L2", "mvp": false },
+        { "id": "C22", "name": "Org / governance", "job": "Show accountability and escalation", "support": "native", "level": "L2", "mvp": false },
+        { "id": "C23", "name": "Initiative portfolio", "job": "Sort initiatives by impact, effort, status", "support": "native", "level": "L2", "mvp": true, "converter_ready": true, "primitives": [".matrix.axes", ".cards", ".ci"], "compact_prompt": "Initiative portfolio: sort ~6-8 initiatives by impact x effort on a 2x2, or as status-tagged cards; mark the quick wins." },
+        { "id": "C24", "name": "Business case / value sizing", "job": "Explain value pool and financial impact", "support": "partial", "level": "L3", "mvp": false },
+        { "id": "C25", "name": "Risk and mitigation", "job": "Pair risks with controls and actions", "support": "native", "level": "L2", "mvp": false },
+        { "id": "C26", "name": "Stakeholder map", "job": "Show influence, interest, ownership", "support": "partial", "level": "L2", "mvp": false },
+        { "id": "C27", "name": "Customer journey", "job": "Show stages, pain points, moments", "support": "gap", "level": "L2", "mvp": false },
+        { "id": "C28", "name": "Segment / persona comparison", "job": "Compare customer or market segments", "support": "native", "level": "L2", "mvp": false },
+        { "id": "C29", "name": "Case example", "job": "Show one proof point or vignette", "support": "native", "level": "L2", "mvp": false },
+        { "id": "C30", "name": "Recommendation / decision", "job": "Close with the ask, decision, next step", "support": "native", "level": "L2", "mvp": true, "converter_ready": true, "primitives": ["h2.title", ".bignum", "ol/li", ".callout"], "compact_prompt": "Recommendation close: the decision/ask in one bold line, the 2-3 reasons, and the first concrete next step with an owner and a date." },
+        { "id": "C31", "name": "Appendix data table", "job": "Preserve detailed evidence", "support": "native", "level": "L2", "mvp": false },
+        { "id": "C32", "name": "Methodology / sources", "job": "Explain the research basis", "support": "partial", "level": "L2", "mvp": false },
+        { "id": "C33", "name": "Assumptions / limitations", "job": "State model boundaries", "support": "native", "level": "L2", "mvp": false },
+        { "id": "C34", "name": "Glossary / definitions", "job": "Define terms", "support": "native", "level": "L2", "mvp": false },
+        { "id": "C35", "name": "Before / after", "job": "Show current vs target state", "support": "native", "level": "L2", "mvp": false },
+        { "id": "C36", "name": "Recommendation tree", "job": "Link recommendation to actions", "support": "partial", "level": "L2", "mvp": false }
+      ]
+    }
+  ]
+}
