@@ -1,0 +1,10 @@
+{
+  "id": "research-readout",
+  "family": "consulting",
+  "label": "Research readout",
+  "hint": "Findings, charts, method",
+  "desc": "Share findings — charts and small multiples with a clear method.",
+  "order": 4,
+  "patterns": ["C02", "C06", "C07", "C12", "C16"],
+  "note": "An insight report: summarise the headline findings (C02), prove them with single charts (C06) and small multiples (C07), map the landscape on a 2x2 (C12), and rate options on a scorecard (C16). Pairs naturally with the Modern Insight and Research Bureau styles."
+}

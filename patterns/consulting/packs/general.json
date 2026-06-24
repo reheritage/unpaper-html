@@ -1,0 +1,11 @@
+{
+  "id": "general",
+  "family": "consulting",
+  "label": "General",
+  "hint": "Balanced, all-purpose",
+  "desc": "A balanced, all-purpose consulting deck — a safe start when you're not sure.",
+  "order": 0,
+  "default": true,
+  "patterns": ["C02", "C05", "C06", "C15", "C30"],
+  "note": "The neutral default goal. Not a specialised pack — a calm recommendation spine (summary, evidence, comparison, close) that fits most asks. The named goal packs below specialise from here."
+}

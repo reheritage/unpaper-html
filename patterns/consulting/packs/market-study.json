@@ -1,0 +1,10 @@
+{
+  "id": "market-study",
+  "family": "consulting",
+  "label": "Market study",
+  "hint": "Size it, map it, rank it",
+  "desc": "Size and map a market — charts, rankings and option comparisons.",
+  "order": 2,
+  "patterns": ["C05", "C06", "C07", "C12", "C15"],
+  "note": "Quantitative market work: carry the point on single charts (C06) and small multiples (C07), position players on a 2x2 (C12), and compare options in a table (C15) — every data slide action-titled (C05) with a source line."
+}

@@ -1,0 +1,10 @@
+{
+  "id": "recommendation",
+  "family": "consulting",
+  "label": "Recommendation",
+  "hint": "Answer first, then the case",
+  "desc": "Make a case and land a decision — the answer first, the evidence, then the ask.",
+  "order": 1,
+  "patterns": ["C02", "C05", "C15", "C16", "C30", "C08"],
+  "note": "The heart of the library: pyramid-principle persuasion. Lead with the executive summary (C02), defend it with action-title evidence (C05) and an option comparison (C15) scored on a scorecard (C16), close with the ask (C30). C08 waterfall sharpens the value case once its converter exhibit ships."
+}

@@ -1,0 +1,10 @@
+{
+  "id": "transformation",
+  "family": "consulting",
+  "label": "Transformation",
+  "hint": "From today to a target state",
+  "desc": "Plan a change journey — issue trees, a roadmap, process flows, initiatives.",
+  "order": 3,
+  "patterns": ["C13", "C18", "C20", "C23", "C30"],
+  "note": "A change story: break the problem into MECE branches (C13), sequence the work as a roadmap (C18) and process flow (C20), portfolio the initiatives by impact/effort (C23), and close on the decision (C30)."
+}

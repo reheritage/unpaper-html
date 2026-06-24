@@ -1,0 +1,10 @@
+{
+  "id": "exec-briefing",
+  "family": "consulting",
+  "label": "Exec briefing",
+  "hint": "A tight board memo",
+  "desc": "Brief leadership fast — a tight, dense board memo.",
+  "order": 5,
+  "patterns": ["C02", "C05", "C15", "C30"],
+  "note": "The shortest spine: executive summary (C02), one or two action-title evidence slides (C05), an option comparison if a decision is needed (C15), and the close (C30). Dense, readable, no padding — board-memo discipline."
+}
