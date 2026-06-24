@@ -44,9 +44,13 @@ C07 small multiples · C08 waterfall · C12 market map / 2×2 · C13 issue tree 
 C15 option comparison · **C16 scorecard / Harvey balls** · C18 roadmap ·
 C20 process flow · C23 initiative portfolio · C30 recommendation.
 
-(C08 and C16 carry a converter gap today — held out of prompt packs until the
-converter ships them. C16 is the first such exhibit being built; see
-[`layouts/C16-scorecard-harvey-balls.md`](./layouts/C16-scorecard-harvey-balls.md).)
+All 13 now have a rich doc in [`layouts/`](./layouts). **C16 has shipped**
+end-to-end (native ring + pie freeforms; see
+[`layouts/C16-scorecard-harvey-balls.md`](./layouts/C16-scorecard-harvey-balls.md)).
+**C08 waterfall** is the one remaining converter gap — its doc
+([`layouts/C08-waterfall-bridge.md`](./layouts/C08-waterfall-bridge.md)) is the
+spec for the next exhibit, and it stays held out of the prompt packs until that
+converter pass ships.
 
 ## Subtype packs (planned, [`packs/`](./packs))
 
