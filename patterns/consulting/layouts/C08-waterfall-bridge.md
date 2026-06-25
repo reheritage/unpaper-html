@@ -3,26 +3,27 @@ id: C08
 family: consulting
 name: Waterfall / bridge
 version: 1
-status: converter-proven
+status: shipped
 unpaper_level: L3
-supported_by_current_template: false
-converter_ready: false
-tokens_compact: 46
+supported_by_current_template: true
+converter_ready: true
+tokens_compact: 92
 ---
 
 # C08 · Waterfall / bridge
 
-> **Converter PROVEN native (2026-06-25); still held out of the live packs.** The
+> **SHIPPED native, live in the recommendation-deck pack (2026-06-25).** The
 > converter renders a hand-authored waterfall as **100% native shapes + text** with
-> NO new pass — the corpus deck `test/corpus/waterfall.html` scores 99.22% with
-> zero objects flattened to a picture (every bar movable, every label retypeable).
-> It works because the bars are positioned divs (→ native shapes via the shape
-> pass), the connectors are thin divs (→ native shapes), and the labels are text.
-> What remains before it enters the live prompt packs (and `converter_ready` flips
-> true) is the **authoring teacher**: a template demo slide + a prompt how-to that
-> shows a model how to compute the running-total pixel geometry, because the web
-> converter runs with scripts OFF — so the bar positions must be baked into the
-> markup, not computed by JS at load. Until that ships, the pattern stays gated.
+> NO new pass — corpus `test/corpus/waterfall.html` 99.22%, zero objects flattened
+> (every bar movable, every label retypeable). The bars are positioned divs (→
+> native shapes), the connectors thin divs (→ native shapes), the labels text. The
+> authoring teacher is now live too: the consulting template carries a **Value
+> bridge** demo slide (`data-kind="waterfall"`, tagged for recommendation /
+> transformation / market-study) and the compact fragment teaches the running-total
+> px geometry — the positions are baked into the markup (the web converter runs
+> scripts OFF, so they can't be computed by JS). **Keep the plot within the slide:
+> an auto-fit shrink would scale the slide and flatten it** (the demo uses scale
+> 2.5px/unit, plot ≤ 280px tall, so it never triggers the shrink).
 
 Walk a total from a start value to an end value through a sequence of positive and
 negative steps — the "bridge" from last year's margin to this year's, or from list
@@ -80,15 +81,18 @@ the chart, and the web converter (scripts OFF) sees the finished bars.
 Each bar lowers to a native rectangle/rounded-rect with its own fill (up/down/total
 colours stay editable), each connector to a native thin rectangle, and every label
 to native text. Verified end to end: `test/corpus/waterfall.html`, **99.22%**, XML
-asserts native `rect`/`roundRect` + the labels and forbids `<a:blip>`. The
-remaining work is authoring guidance (a template demo slide + a how-to fragment),
-not converter code.
+asserts native `rect`/`roundRect` + the labels and forbids `<a:blip>`; the
+consulting template's Value-bridge demo slide also converts native (21 text · 17
+shapes · 0 flattened). No converter code was needed.
 
-## Prompt fragment (compact — held back until the authoring teacher ships)
+## Prompt fragment (compact — live)
 
-> Waterfall/bridge: show how a total moves from a start value to an end value
-> through +/- steps, with running-total bars and connectors; label each step's
-> delta and the start/end totals.
+> Waterfall/bridge (.wf block): walk a total from start to end through +/- steps.
+> Position each bar by its running total in baked px (baseline at the plot bottom,
+> scale ~2.5px/unit; .up green / .down red / .total dark); join steps with thin
+> .wf-conn lines at the pre-step total; label each delta (+/-) and the start/end
+> totals. Copy the Value-bridge slide's geometry and keep the plot within the slide
+> so it converts to native shapes.
 
 ## HTML skeleton (illustrative — the proven markup, scale = 3px/unit)
 
@@ -114,5 +118,5 @@ not converter code.
 - Increases and decreases are visually distinct (`.up` / `.down` / `.total`).
 - Bar positions are baked into the markup (no JS) so the running totals are exact
   and conversion-stable.
-- Converts to native shapes + text (corpus-proven); it is simply not yet
-  auto-advertised in the live prompt packs (pending the authoring teacher).
+- Converts to native shapes + text (corpus-proven; live in the recommendation pack).
+- The plot stays within the slide (no auto-fit shrink) — a scaled slide flattens.
