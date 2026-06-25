@@ -3,7 +3,7 @@ id: C08
 family: consulting
 name: Waterfall / bridge
 version: 1
-status: planned
+status: converter-proven
 unpaper_level: L3
 supported_by_current_template: false
 converter_ready: false
@@ -12,11 +12,17 @@ tokens_compact: 46
 
 # C08 · Waterfall / bridge
 
-> **Converter gap — not yet a sanctioned prompt pattern.** This doc is the spec
-> for the next signature exhibit (build order #2 after C16, ledger experiment
-> E-6). It is documented here for humans and capable assistants; it is held OUT of
-> the compiled prompt packs until its converter quartet ships (§4.4 rule). Do not
-> advertise it to models yet.
+> **Converter PROVEN native (2026-06-25); still held out of the live packs.** The
+> converter renders a hand-authored waterfall as **100% native shapes + text** with
+> NO new pass — the corpus deck `test/corpus/waterfall.html` scores 99.22% with
+> zero objects flattened to a picture (every bar movable, every label retypeable).
+> It works because the bars are positioned divs (→ native shapes via the shape
+> pass), the connectors are thin divs (→ native shapes), and the labels are text.
+> What remains before it enters the live prompt packs (and `converter_ready` flips
+> true) is the **authoring teacher**: a template demo slide + a prompt how-to that
+> shows a model how to compute the running-total pixel geometry, because the web
+> converter runs with scripts OFF — so the bar positions must be baked into the
+> markup, not computed by JS at load. Until that ships, the pattern stays gated.
 
 Walk a total from a start value to an end value through a sequence of positive and
 negative steps — the "bridge" from last year's margin to this year's, or from list
@@ -42,34 +48,62 @@ total across.
 - Connector lines linking each bar's top to the next bar's base (the running total).
 - A consistent colour convention (e.g. increases one accent, decreases a muted red).
 
-## unPaper primitives (planned)
+## unPaper primitives (proven approach)
 
-- `data-unpaper-diagram="waterfall"` on a container carrying the step data
-- inline `<svg>` bars as the visual encoding (renders + prints), lowered by the
-  converter to a **parametric group of native shapes** (every bar movable, every
-  label retypeable)
+- a `.wf` plot box (`position:relative`, fixed height) with a baseline rule
+- one absolutely-positioned `.wf-bar` per step (`.up` / `.down` / `.total`), its
+  `bottom` + `height` = the running-total geometry in px → native shape (shape pass)
+- thin absolute `.wf-conn` divs bridging each bar's end-level to the next → native shapes
+- `.wf-val` (delta / total) and `.wf-cat` (category) labels → native text
 
-## Conversion (planned — the build target)
+No `data-unpaper-diagram` attribute and **no new converter pass** — the existing
+shape + text passes do all the work, exactly as for the 2×2 matrix and org tree.
 
-The converter will lower the waterfall to native rectangles (one per step,
-positioned at its running-total baseline) plus native connector lines, in the deck
-accent — the same freeform/native-shape approach as C16. Until that pass exists,
-authoring a waterfall would flatten to a picture, so the pattern stays out of the
-packs. Geometry to be designed against the user's source PDFs (§9).
+## Geometry (the running-total math the author must bake in)
 
-## Prompt fragment (compact — held back)
+Pick a scale `s` (px per unit) and a plot height `H`. Track the running total `c`,
+starting at 0. For each element, left-to-right:
+
+- **Start / End / subtotal** (baseline-anchored): `bottom = 0`, `height = value × s`.
+  Set `c = value`.
+- **Increase** `+d`: `bottom = c × s`, `height = d × s`; then `c += d`.
+- **Decrease** `−d`: `c -= d`; then `bottom = c × s`, `height = d × s` (the bar spans
+  the new lower total up to the old higher total).
+- **Connector** into a step: a thin div at `bottom = c × s` (the total *before* the
+  step), spanning the gap from the previous bar's right edge to this bar's left.
+
+Because the positions are baked into the markup, a missing font can never re-flow
+the chart, and the web converter (scripts OFF) sees the finished bars.
+
+## Conversion (PROVEN — native, no new pass)
+
+Each bar lowers to a native rectangle/rounded-rect with its own fill (up/down/total
+colours stay editable), each connector to a native thin rectangle, and every label
+to native text. Verified end to end: `test/corpus/waterfall.html`, **99.22%**, XML
+asserts native `rect`/`roundRect` + the labels and forbids `<a:blip>`. The
+remaining work is authoring guidance (a template demo slide + a how-to fragment),
+not converter code.
+
+## Prompt fragment (compact — held back until the authoring teacher ships)
 
 > Waterfall/bridge: show how a total moves from a start value to an end value
 > through +/- steps, with running-total bars and connectors; label each step's
 > delta and the start/end totals.
 
-## HTML skeleton (illustrative — provisional)
+## HTML skeleton (illustrative — the proven markup, scale = 3px/unit)
 
 ```html
-<div data-unpaper-diagram="waterfall"
-     data-start="100" data-end="118"
-     data-steps='[{"label":"Price","delta":12},{"label":"Mix","delta":-4},{"label":"Cost","delta":10}]'>
-  <!-- inline <svg> bars rendered to match; the converter reads the data-* contract -->
+<div class="wf">                               <!-- position:relative; height:360px; baseline rule -->
+  <!-- Start total 100 → baseline-anchored, height 300 -->
+  <div class="wf-bar total" style="left:55px;bottom:0;height:300px"></div>
+  <div class="wf-val" style="left:55px;bottom:304px">100</div>
+  <div class="wf-cat" style="left:55px">Start</div>
+  <!-- Price +12: 100→112, bottom 300 height 36; connector at the pre-step total (300) -->
+  <div class="wf-conn" style="left:145px;width:90px;bottom:300px"></div>
+  <div class="wf-bar up" style="left:235px;bottom:300px;height:36px"></div>
+  <div class="wf-val" style="left:235px;bottom:340px">+12</div>
+  <div class="wf-cat" style="left:235px">Price</div>
+  <!-- …Mix −4, Volume +8, Cost −6… then End total 110 (baseline-anchored, height 330) -->
 </div>
 <p class="source">Source: margin bridge, FY23 → FY24.</p>
 ```
@@ -77,5 +111,8 @@ packs. Geometry to be designed against the user's source PDFs (§9).
 ## Checks
 
 - Start and end totals are explicit; every step shows its delta.
-- Increases and decreases are visually distinct.
-- **Not** to be emitted into a deck for conversion until the exhibit ships.
+- Increases and decreases are visually distinct (`.up` / `.down` / `.total`).
+- Bar positions are baked into the markup (no JS) so the running totals are exact
+  and conversion-stable.
+- Converts to native shapes + text (corpus-proven); it is simply not yet
+  auto-advertised in the live prompt packs (pending the authoring teacher).

@@ -47,10 +47,11 @@ C20 process flow · C23 initiative portfolio · C30 recommendation.
 All 13 now have a rich doc in [`layouts/`](./layouts). **C16 has shipped**
 end-to-end (native ring + pie freeforms; see
 [`layouts/C16-scorecard-harvey-balls.md`](./layouts/C16-scorecard-harvey-balls.md)).
-**C08 waterfall** is the one remaining converter gap — its doc
-([`layouts/C08-waterfall-bridge.md`](./layouts/C08-waterfall-bridge.md)) is the
-spec for the next exhibit, and it stays held out of the prompt packs until that
-converter pass ships.
+**C08 waterfall** is now **converter-proven** — it renders as 100% native shapes +
+text with no new pass (corpus `waterfall.html`, 99.22%; see
+[`layouts/C08-waterfall-bridge.md`](./layouts/C08-waterfall-bridge.md)) — but it
+stays held out of the live prompt packs until the authoring teacher (a template
+demo slide + a how-to that bakes the running-total geometry) ships.
 
 ## Subtype packs (planned, [`packs/`](./packs))
 
